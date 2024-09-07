@@ -1,7 +1,7 @@
 #!/system/bin/sh
 
 (
-    until [ $(getprop sys.boot_completed) -eq 1 ]; do
+    until [ ! -n "`ps -ef |grep -v grep|grep juicity-client|awk '{print $2}'`" ]; do
         sleep 5
     done
     /data/adb/xray/scripts/start.sh
